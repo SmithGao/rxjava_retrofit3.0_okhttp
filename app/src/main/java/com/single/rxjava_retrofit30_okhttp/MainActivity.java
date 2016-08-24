@@ -47,6 +47,9 @@ public class MainActivity extends AppCompatActivity {
 					@Override
 					public void onMyNext(String jsonStr) {
 						LogUtil.defLog(jsonStr);
+//						ArrayList<GoodVideoBean> arrayList = ParseJsonUtil.jsonStrToListBean(jsonStr, GoodVideoBean.class);
+//						Object toBean = ParseJsonUtil.jsonStrToBean(jsonStr, GoodVideoBean.class);
+//						GoodVideoBean videoBean= (GoodVideoBean) toBean;
 						data.setText(jsonStr);
 					}
 
