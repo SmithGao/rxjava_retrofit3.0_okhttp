@@ -284,6 +284,6 @@ onNext(T t)
 ```
 String jsonStr = ApiManager.objectMapper.writeValueAsString(result.getData());
 ```
-此方法是jackjson中 将返回的json 转化成字符串的形式返回出去，在我的MainActivity中 我又自己写了个ParseJsonUtil类 来处理返回的字符串(这样很大问题解决了重复性)  可转化集合 或者单个的实体 具体的可在log中打印出来 哦 对了 我的GoodVideoBean只是个样品 没有实例的数据返回 大家可以尝试写一下 假如在又不明白的可以加我的qq 2215719882 来询问我 
+此方法是jackjson中 将返回的json 转化成字符串的形式返回出去，在我的MainActivity中 我又自己写了个ParseJsonUtil类 来处理返回的字符串(这样很大问题解决了重复性)  可转化集合 或者单个的实体 具体的可在log中打印出来 哦 对了 我的GoodVideoBean只是个样品 没有实例的数据返回 大家可以尝试写一下 假如在又不明白的可以加我的qq 2215719882 来询问我 待持续更新中。。。
 
 #### 最后 欢迎 start －－屌丝程序员一枚 
