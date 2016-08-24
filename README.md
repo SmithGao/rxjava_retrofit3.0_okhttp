@@ -193,7 +193,7 @@ OK
 ```
 设置流文件处理，设置执行在主线程。
 ###### 4:.subscribe(new MySubscriber<Result>()  What is fuck?
-你才对了 我又给封装了 
+你猜对了 我又给封装了 
 
 ```
 public abstract class MySubscriber<T> extends Subscriber<T> {
@@ -263,4 +263,27 @@ public abstract class MySubscriber<T> extends Subscriber<T> {
 	public abstract void onMyCompleted();
 ```
 虽然这里类在代码里有 但是我还是选择了全部贴出来 讲解开始：
-###### 
+###### 1:创建一个抽象类MySubscriber<T> 继承Subscriber 人有会问 为啥里面带范型 T 呢
+范型的定义：泛型，即“参数化类型”。一提到参数，最熟悉的就是定义方法时有形参，然后调用此方法时传递实参。那么参数化类型怎么理解呢？顾名思义，就是将类型由原来的具体的类型参数化，类似于方法中的变量参数，此时类型也定义成参数形式（可以称之为类型形参），然后在使用/调用时传入具体的类型（类型实参）
+
+所以在接收参数的时候 我可以任意的将参数实例化(避免了参数写死) 说大白话就是：我在项目a中的根节点是｛1，2，3｝那我在项目b中的根节点可能就要变成{a,b,c,d} 
+
+#####  值得注意的是在你的实体类Result中 也要使用范型来接收数据即Result < T > 否则无效，甚至报错。到时候大家可以往底层的代码看看 其实Subscriber是实现了观察者Observer的方法的 在这里我不再深多解释－双手将链接奉上[点击－抛物线](http://gank.io/post/560e15be2dca930e00da1083) 
+
+好了 当我的MySubscriber< T > 继承Subscriber 我同样也是实现了它内部的方法 
+
+```
+onStart()
+onCompleted()
+onError(Throwable errorMsg)
+onNext(T t)
+```
+同时 我自己也写了四个抽象的方法来作为整个抽象类的返回值
+在此处 onNext(T t) 承载了返回的数据 到时大家可以根据自己(公司的)项目来更改 ,方法中 唯一必须要写的就是
+ 
+```
+String jsonStr = ApiManager.objectMapper.writeValueAsString(result.getData());
+```
+此方法是jackjson中 将返回的json 转化成字符串的形式返回出去，在我的MainActivity中 我又自己写了个ParseJsonUtil类 来处理返回的字符串(这样很大问题解决了重复性)  可转化集合 或者单个的实体 具体的可在log中打印出来 哦 对了 我的GoodVideoBean只是个样品 没有实例的数据返回 大家可以尝试写一下 假如在又不明白的可以加我的qq 2215719882 来询问我 
+
+#### 最后 欢迎 start －－屌丝程序员一枚 
