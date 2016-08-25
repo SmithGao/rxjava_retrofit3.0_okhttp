@@ -2,7 +2,7 @@
 ## 一：项目简介
 重所周知 当下最流行的网络请求的框架非rxjava+retrofit+okhttp3三合一了
 但是在网络上总是找不到一个比较全面的介绍 
-于是呼我自己研究了一套网络请求的发开框架 目前已经写入我开发的项目当中
+于是乎我自己研究了一套网络请求的发开框架 目前已经写入我开发的项目当中
 目前还在学习的小伙伴们可以学习一下
 - (此篇文章主要针对我的demo 很多细节的东西讲的不是很到位 但是我会把我在网上看的比较好的文章贴上去 让大家详细的了解)
 
@@ -32,7 +32,7 @@ public interface ApiManagerService {
 	Observable<Result> getReslut(@QueryMap Map<String, String> option);
 }
 ```
-我先说一下Result类，这是我自己demo中使用的实体类接数据的，我是结合了rxjava的Subscriber(观察者)来封装的后面的文段我会在次讲解 这里给大家留个悬念<img src="emoji/smile" width="18"/><img src="emoji/santa" width="18"/>
+我先说一下Result类，这是我自己demo中使用的实体类接数据的，我是结合了rxjava的Subscriber(观察者)来封装的后面的文段我会在次讲解 这里给大家留个悬念
 #####注 ：次处以在ApiManagerService类中声明
 
 显而易见@POST，@GET的是请求方式，参数注解有@PATH和@Query，@QueryMap等。
@@ -63,7 +63,7 @@ public interface ApiManagerService {
 	}
 ```
 
-###### 这是OkHttp3自带的监听可以输出整个url 还可以打印请求数据的时间 让开发者很清楚的了解请求的耗时操作流程－真心的良心制作<img src="emoji/dog" width="18"/>
+###### 这是OkHttp3自带的监听可以输出整个url 还可以打印请求数据的时间 让开发者很清楚的了解请求的耗时操作流程－真心的良心制作
 ```
 //初始化OkHttp3的初始化
 	private static OkHttpClient client = new OkHttpClient.Builder()
@@ -79,7 +79,7 @@ public interface ApiManagerService {
 ###### 1:添加OKhttp3的监听事件
 ###### 2:清理数据的缓存
 ###### 3:在链接失败后重新链接
-###### 4:链接，读，写的时间 可以自己设置 当然不写也无所谓啦<img src="emoji/stuck_out_tongue_winking_eye" width="18"/>
+###### 4:连接，读，写的时间 可以自己设置 当然不写也无所谓啦<img src="emoji/stuck_out_tongue_winking_eye" width="18"/>
 ###### 5:最后 build()
 ```
 
@@ -94,7 +94,7 @@ public interface ApiManagerService {
 初始化Retrofit 
 ###### 1:添加请求头
 ###### 2:添加okhttp的对象(前面也说了－retrofit就是对okhttp做了一层封装)
-###### 3: 重点来 重点来 重点来重要的事情要说三遍
+###### 3: 重点 重点 重点 重要的事情要说三遍
 ##### 解析
 
 ```
@@ -106,7 +106,7 @@ Wire: com.squareup.retrofit2:converter-wire
 Simple XML: com.squareup.retrofit2:converter-simplexml
 Scalars (primitives, boxed, and String): com.squareup.retrofit2:converter-scalars
 ```
-总有一款你需要的解析形式 附赠官网retrofit 官网地址：http://square.github.io/retrofit/  启动你的翻译器慢慢看吧！(英语大神除外哈 <img src="emoji/cow" width="18"/>)
+总有一款你需要的解析形式 附赠官网retrofit 官网地址：http://square.github.io/retrofit/  启动你的翻译器慢慢看吧！(英语大神除外哈)
 大家可以看到 我添加的是jackjson解析 这是我demo中所需要的 后续一起讲解。
 在此介绍一片文章 [点击一下吧](http://blog.csdn.net/u012301841/article/details/49685677)
 
@@ -140,8 +140,8 @@ Scalars (primitives, boxed, and String): com.squareup.retrofit2:converter-scalar
 				});
 	}
 ```
-朋友 看到这请你告诉我 你是不是一脸的懵b 别着急 前面介绍了半天 现在正主正在一点点的出来了
-咱们一步步的走我来给你解释一下<img src="emoji/smile" width="18"/>
+朋友 看到这请你告诉我 你是不是一脸的懵b 别着急 前面介绍了半天 现在正主一点点的出来了
+咱们一步步的走我来给你解释一下
 
  ###### 1  :Map集合ApiManager.getBasicMap() 自己封装了一下 可以将以后项目中的公共参数放进去 
 ######  例如：
@@ -266,7 +266,7 @@ public abstract class MySubscriber<T> extends Subscriber<T> {
 ###### 1:创建一个抽象类MySubscriber<T> 继承Subscriber 人有会问 为啥里面带范型 T 呢
 范型的定义：泛型，即“参数化类型”。一提到参数，最熟悉的就是定义方法时有形参，然后调用此方法时传递实参。那么参数化类型怎么理解呢？顾名思义，就是将类型由原来的具体的类型参数化，类似于方法中的变量参数，此时类型也定义成参数形式（可以称之为类型形参），然后在使用/调用时传入具体的类型（类型实参）
 
-所以在接收参数的时候 我可以任意的将参数实例化(避免了参数写死) 说大白话就是：我在项目a中的根节点是｛1，2，3｝那我在项目b中的根节点可能就要变成{a,b,c,d} 
+所以在接收参数的时候 我可以任意的将参数实例化(避免了参数写死) 说大白话就是：我在项目a中的json根节点是｛1，2，3｝那我在项目b中的json根节点可能就要变成{a,b,c,d} 
 
 #####  值得注意的是在你的实体类Result中 也要使用范型来接收数据即Result < T > 否则无效，甚至报错。到时候大家可以往底层的代码看看 其实Subscriber是实现了观察者Observer的方法的 在这里我不再深多解释－双手将链接奉上[点击－抛物线](http://gank.io/post/560e15be2dca930e00da1083) 
 
@@ -284,6 +284,7 @@ onNext(T t)
 ```
 String jsonStr = ApiManager.objectMapper.writeValueAsString(result.getData());
 ```
-此方法是jackjson中 将返回的json 转化成字符串的形式返回出去，在我的MainActivity中 我又自己写了个ParseJsonUtil类 来处理返回的字符串(这样很大问题解决了重复性)  可转化集合 或者单个的实体 具体的可在log中打印出来 哦 对了 我的GoodVideoBean只是个样品 没有实例的数据返回 大家可以尝试写一下 假如在又不明白的可以加我的qq 2215719882 来询问我 待持续更新中。。。
+此方法是jackjson中 将返回的json 转化成字符串的形式返回出去，在我的MainActivity中 我又自己写了个ParseJsonUtil类 来处理返回的字符串(这样很大问题解决了重复性)  可转化集合 或者单个的实体 具体的可在log中打印出来 哦 对了 我的GoodVideoBean只是个样品 没有实例的数据返回 大家可以尝试写一下 假如在有不明白的可以加我的qq 2215719882 来询问我 
+待持续更新中。。。
 
 #### 最后 欢迎 start －－屌丝程序员一枚 
